@@ -1,0 +1,404 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #222222;
+  color: #9e9ea4;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.material-icons-outlined {
+  vertical-align: middle;
+  line-height: 1px;
+  font-size: 35px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 260px 1fr 1fr 1fr;
+  grid-template-rows: 0.2fr 3fr;
+  grid-template-areas:
+    'sidebar header header header'
+    'sidebar main main main';
+  height: 100vh;
+}
+
+/* ---------- HEADER ---------- */
+.header {
+  grid-area: header;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #2d2d2d;
+  padding: 0 30px 0 30px;
+  box-shadow: 0 6px 7px -3px rgba(0, 0, 0, 0.35);
+}
+
+.menu-icon {
+  display: none;
+}
+
+/* ---------- SIDEBAR ---------- */
+
+#sidebar {
+  grid-area: sidebar;
+  height: 100%;
+  background-color: #2d2d2d;
+  box-shadow: 20px 0 8px -5px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+}
+
+.sidebar-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 30px 30px 30px;
+  margin-bottom: 30px;
+}
+
+.sidebar-title > span {
+  display: none;
+}
+
+.sidebar-brand {
+  margin-top: 15px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.sidebar-list {
+  padding: 0;
+  margin-top: 15px;
+  list-style-type: none;
+}
+
+.sidebar-list-item {
+  padding: 20px 20px 20px 20px;
+  font-size: 18px;
+}
+
+.sidebar-list-item:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}
+
+.sidebar-list-item > a {
+  text-decoration: none;
+  color: #9e9ea4;
+}
+
+.sidebar-responsive {
+  display: inline !important;
+  position: absolute;
+  /*
+    the z-index of the ApexCharts is 11
+    we want the z-index of the sidebar higher so that
+    the charts are not showing over the sidebar 
+    on small screens
+  */
+  z-index: 12 !important;
+}
+
+/* ---------- MAIN ---------- */
+
+.main-container {
+  grid-area: main;
+  overflow-y: auto;
+  padding:20px 20px;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.main-title {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.main-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 25px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  width: 250px;
+  height: auto;
+}
+
+canvas {
+  margin-top: 10px;
+  width: 120px !important;
+  height: 120px !important;
+}
+
+
+.card:first-child {
+  background-color: #38393b;
+}
+
+.card:nth-child(2) {
+  background-color: #38393b;
+}
+
+.card:nth-child(3) {
+  background-color: #38393b;
+}
+
+.card:nth-child(4) {
+  background-color: #38393b;
+}
+
+.card-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-inner h3 {
+  font-size: 22px; /* Increase the font size */
+  font-weight: bold;
+  color: #ffffff;
+  text-transform: uppercase; /* Optional: Makes text all caps */
+  letter-spacing: 1px; /* Optional: Adds spacing between letters */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  word-wrap: break-word;
+  line-height: 150%;
+}
+
+/* Add space between label and input field only in the second card */
+.card:nth-child(2) .input-box label {
+  margin-bottom: 8px; /* Adjust spacing between label and input */
+}
+.card:nth-child(3) .input-box label {
+  margin-bottom: 8px; /* Adjust spacing between label and input */
+}
+.card:nth-child(4) .input-box label {
+  margin-bottom: 8px; /* Adjust spacing between label and input */
+}
+
+
+
+
+
+.card-inner > .material-icons-outlined {
+  font-size: 45px;
+}
+
+.charts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 60px;
+}
+
+.charts-card {
+  background-color: #38393b;
+  margin-bottom: 20px;
+  padding: 25px;
+  box-sizing: border-box;
+  -webkit-column-break-inside: avoid;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.chart-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* Style for the input container */
+.input-box {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: 10px 0;
+  width: 100%;
+}
+
+/* Label styling */
+.input-box label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+/* Input field styling */
+.input-box input {
+  width: 90%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  outline: none;
+  box-shadow: inset 0 4px 6px rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+/* Placeholder color */
+.input-box input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 400;
+}
+
+/* Input focus effect */
+.input-box input:focus {
+  border-color: #5a5c5c;
+  box-shadow: 0 0 10px rgba(29, 29, 29, 0.5);
+}
+
+/* Hide number input spinner controls for all browsers */
+.input-box input[type="number"] {
+  -moz-appearance: textfield; /* Firefox */
+  appearance: textfield; /* General */
+}
+
+/* Hide spinners for Chrome, Safari, Edge, and Opera */
+.input-box input[type="number"]::-webkit-inner-spin-button,
+.input-box input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Button styling (matches input but centered) */
+button {
+  width: 70%;
+  max-width: 250px;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background:  rgba(255, 255, 255, 0.1);
+  color: #fff;
+  outline: none;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  box-shadow: inset 0 4px 6px rgba(189, 186, 174, 0.2);
+  transition: all 0.3s ease;
+  display: block; /* Makes it a block element */
+  margin: 10px auto; /* Centers horizontally */
+}
+
+/* Button hover effect */
+button:hover {
+  background: rgba(23, 20, 13, 0.3);
+  box-shadow: 0 0 10px rgba(23, 21, 13, 0.6);
+}
+
+/* Button active (click) effect */
+button:active {
+  background: rgba(84, 82, 82, 0.5);
+  box-shadow: 0 0 12px rgba(253, 253, 253, 0.8);
+}
+
+/* Ensure the chart container is properly centered */
+.chart-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 140px;  /* Adjusted size */
+  height: 140px; /* Adjusted size */
+}
+
+/* Adjust the canvas (chart size) */
+canvas {
+  width: 100% !important;
+  height: 100% !important;
+  
+  
+}
+
+/* Custom text inside the donut chart */
+.chart-container .chart-label {
+  position: absolute;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+}
+
+
+
+
+/* ---------- MEDIA QUERIES ---------- */
+
+/* Medium <= 992px */
+
+@media screen and (max-width: 992px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.2fr 3fr;
+    grid-template-areas:
+      'header'
+      'main';
+  }
+
+  #sidebar {
+    display: none;
+  }
+
+  .menu-icon {
+    display: inline;
+  }
+
+  .sidebar-title > span {
+    display: inline;
+  }
+}
+
+/* Small <= 768px */
+
+@media screen and (max-width: 768px) {
+  .main-cards {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 0;
+  }
+
+  .charts {
+    grid-template-columns: 1fr;
+    margin-top: 30px;
+  }
+}
+
+/* Extra Small <= 576px */
+
+@media screen and (max-width: 576px) {
+  .hedaer-left {
+    display: none;
+  }
+}
+

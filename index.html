@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Dashboard</title>
+
+    <!-- Montserrat Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="grid-container">
+
+      <!-- Header -->
+      <header class="header">
+        <div class="menu-icon" onclick="openSidebar()"></div>
+        <div class="header-right">
+            <span class="material-icons-outlined">account_circle</span>
+            <span id="user-email">Loading...</span> <!-- Display logged-in user's email -->
+        </div>
+      </header>
+      <!-- End Header -->
+
+      <!-- Sidebar -->
+      <aside id="sidebar">
+        <div class="sidebar-title">
+          <div class="sidebar-brand">
+            <span class="material-symbols-outlined"></span> BITEWISE
+          </div>
+          <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
+        </div>
+
+        <ul class="sidebar-list">
+          <li class="sidebar-list-item">
+            <a href="#" target="_blank">
+              <span class="material-icons-outlined">dashboard</span> Dashboard
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="#" target="_blank">
+              <span class="material-icons-outlined">inventory_2</span> Meal Tracker
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="bablu-ai.com" target="_blank">
+              <span class="material-icons-outlined">category</span> Chat With Bablu
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="#" target="_blank">
+              <span class="material-icons-outlined">groups</span> Profile
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="#" id="logout-btn">
+              <span class="material-icons-outlined">fact_check</span> Logout
+            </a>
+          </li>
+          
+          <li class="sidebar-list-item">
+            <a href="#" target="_blank">
+              <span class="material-icons-outlined">settings</span> Settings
+            </a>
+          </li>
+        </ul>
+      </aside>
+      <!-- End Sidebar -->
+
+      <!-- Main -->
+      <main class="main-container">
+        <div class="main-title">
+          <h2>DASHBOARD</h2>
+        </div>
+
+        <div class="main-cards">
+
+          <!-- Date Card -->
+          <div class="card">
+            <div class="card-inner">
+                <h3>Current Date</h3>
+            </div>
+            <div class="input-box">
+                <label for="current-date">Current Date:</label>
+                <input type="date" id="current-date">
+            </div>
+            <button onclick="clearMacros()" class="btn">Clear Macros Data for Date</button>
+            <button onclick="clearCurrentDateData()" class="btn">Clear Weight Data for Date</button>
+            <button onclick="clearSleep()" class="btn">Clear Sleep Data for Date</button>
+          </div>
+
+          <div class="card">
+            <div class="card-inner">
+                <h3>Macronutrient Intake</h3>
+            </div>
+        
+            <div class="input-box">
+                <label>Protein (g):</label>
+                <input type="number" id="proteinInput" placeholder="Enter protein">
+            </div>
+            
+            <div class="input-box">
+                <label>Carbs (g):</label>
+                <input type="number" id="carbInput" placeholder="Enter carbs">
+            </div>
+            
+            <div class="input-box">
+                <label>Fat (g):</label>
+                <input type="number" id="fatInput" placeholder="Enter fat">
+            </div>
+        
+            <p>Total Calories: <span id="caloriesOutput">0</span> kcal</p>
+            <button onclick="saveMacros()">Save Macros</button>
+          </div>
+
+          <div class="card">
+            <div class="card-inner">
+                <h3>Weight Tracker</h3>
+            </div>
+            
+            <div class="input-box">
+              <label for="current-weight">Current Weight (kg):</label>
+              <input type="number" id="current-weight" placeholder="Enter current weight">
+            </div>
+        
+            <div class="input-box">
+              <label for="target-weight">Target Weight (kg):</label>
+              <input type="number" id="target-weight" placeholder="Enter target weight">
+            </div>
+        
+            <button onclick="saveWeight()" class="btn">Save Goal</button>
+          </div>
+
+          <div class="card">
+            <div class="card-inner">
+                <h3>Sleep Tracker</h3>
+            </div>
+        
+            <div class="input-box">
+                <label for="sleep-hours">Last Night's Sleep (hrs):</label>
+                <input type="number" id="sleep-hours" placeholder="Enter hours">
+            </div>
+        
+            <div class="input-box">
+                <label for="sleep-target">Target Sleep (hrs):</label>
+                <input type="number" id="sleep-target" placeholder="Enter target (default 8h)">
+            </div>
+        
+            <button onclick="saveSleep()" class="btn">Save</button>
+        
+            <!-- Donut Chart: Now positioned in the balanced space -->
+            <div class="chart-container">
+                <canvas id="sleep-chart"></canvas>
+            </div>
+          </div>
+      
+        </div>
+      
+        <div class="charts">
+          <div class="charts-card">
+            <h2 class="chart-title">MACROS PROGRESS BAR</h2>
+            <div id="bar-chart"></div>
+          </div>
+      
+          <div class="charts-card">
+            <h2 class="chart-title">MONITOR YOUR WEIGHT</h2>
+            <div id="area-chart"></div>
+          </div>
+      
+        </div>
+      
+      </main>
+      <!-- End Main -->
+
+    </div>
+
+    <!-- Scripts -->
+    <!-- ApexCharts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.5/apexcharts.min.js"></script>
+    <!-- Custom JS -->
+    <!-- Chart.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Load Main Dashboard Script -->
+    <script src="firebase-auth.js"></script>
+    <script src="dashboard.js"></script>
+
+  </body>
+</html>

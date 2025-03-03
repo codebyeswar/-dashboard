@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Page</title>
+    <link rel="stylesheet" href="ai.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Left Sidebar -->
+        <aside class="sidebar">
+            <div class="user-profile">
+                <h3 class="username">Hi, Username</h3>
+            </div>
+
+            <!-- Sidebar Options -->
+            <div class="sidebar-options">
+                <button class="sidebar-btn">Button 1</button>
+                <button class="sidebar-btn">Button 2</button>
+                <button class="sidebar-btn">Button 3</button>
+                <button class="sidebar-btn">Button 4</button>
+            </div>
+
+            <!-- Space for AI Animation -->
+            <div class="ai-animation-space"></div>
+
+            <!-- Back to Dashboard Button -->
+            <button class="back-btn">Back to Dashboard</button>
+        </aside>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Chat Display Area -->
+            <div class="chat-display" id="chatDisplay">
+                <!-- Messages will appear here -->
+            </div>
+
+            <!-- Chat Input Field -->
+            <div class="chat-input-container">
+                <textarea id="chatInput" placeholder="Send a message..."></textarea>
+                <button id="sendBtn" class="send-btn empty">~</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="ai.js"></script> <!-- JavaScript File -->
+</body>
+</html>
